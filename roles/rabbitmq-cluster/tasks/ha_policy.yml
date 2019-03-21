@@ -1,0 +1,2 @@
+- name: Setting ha policy | all queues on the RabbitMQ cluster will be mirroring to all nodes on the cluster.
+  command: rabbitmqctl set_policy ha-all ".*" '{"ha-mode":"all"}'

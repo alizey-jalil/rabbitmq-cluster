@@ -1,0 +1,8 @@
+all:
+  hosts:
+    master:
+      ansible_host: vagrant@192.168.33.10
+    slave01:
+      ansible_host: vagrant@192.168.33.11
+    salve02:
+      ansible_host: vagrant@192.168.33.12

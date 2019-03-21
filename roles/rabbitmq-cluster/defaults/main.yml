@@ -1,0 +1,25 @@
+---
+# defaults file for rabbitmq-cluster
+
+master:
+  ip: '192.168.33.10'
+  name: 'master'
+
+slave01:
+  ip: '192.168.33.11'
+  name: 'slave01'
+
+slave02:
+  ip: '192.168.33.12'
+  name: 'slave02'
+
+rmq_port:
+  management_port: '15672'
+  server_port: '5672'
+  cluster_port1: '4369'
+  cluster_port2: '25672'
+
+rabbitmq_erlang_cookie: 'WKRBTTEQRYPTQOPUKSVF'
+
+rabbit_username: 'admin'
+rabbit_password: 'password'

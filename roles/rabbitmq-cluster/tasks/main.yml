@@ -1,0 +1,10 @@
+---
+# tasks file for rabbitmq-cluster
+
+- include: hosts.yml
+- include: install.yml
+- include: plugins.yml
+- include: firewall.yml
+- include: setup_cluster.yml
+- include: user_create.yml
+- include: ha_policy.yml

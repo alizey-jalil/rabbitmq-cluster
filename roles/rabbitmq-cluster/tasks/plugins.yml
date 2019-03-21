@@ -1,0 +1,12 @@
+
+# interface that allows you to monitor and handle RabbitMQ server from the web browser
+# runs on the default port 15672
+
+- name: enable rabbitmq management plugins
+  become: yes
+  become_method: sudo
+  become_user: root
+  command: rabbitmq-plugins enable rabbitmq_management
+  notify: "restart rabbitmq-server"
+
+- meta: flush_handlers

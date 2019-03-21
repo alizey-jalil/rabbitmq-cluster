@@ -1,0 +1,23 @@
+- name: Adding epel-repository
+  yum:
+    name: epel-release
+    state: present
+    update_cache: yes
+
+- name: Install erlang
+  yum:
+    name: erlang
+    state: present
+    update_cache: yes
+
+- name: Installing rabbitmq-server to all nodes
+  become: yes
+  become_user: root
+  become_method: sudo
+  yum:
+    name: rabbitmq-server
+    state: present
+    update_cache: yes
+  notify: "start rabbitmq-server"
+
+- meta: flush_handlers

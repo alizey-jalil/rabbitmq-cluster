@@ -1,0 +1,21 @@
+# Applying ignore_errors only because error can be thrown in the case user already exists
+
+- name: Create a new user for rabbitmq
+  command: rabbitmqctl add_user {{ rabbit_username }} {{ rabbit_password }}
+  when: inventory_hostname == "{{ master.name }}"
+  ignore_errors: yes
+
+- name: Make the new user an administrator
+  command: rabbitmqctl set_user_tags {{ rabbit_username }} administrator
+  when: inventory_hostname == "{{ master.name }}"
+  ignore_errors: yes
+
+- name: Giving permissions to modify, write, and read all vhosts to the created admin user
+  command: rabbitmqctl set_permissions -p / {{ rabbit_username }} ".*" ".*" ".*"
+  when: inventory_hostname == "{{ master.name }}"
+  ignore_errors: yes
+
+- name: Now deleting the default guest user
+  command: rabbitmqctl delete_user guest
+  when: inventory_hostname == "{{ master.name }}"
+  ignore_errors: yes

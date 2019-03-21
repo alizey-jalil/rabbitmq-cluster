@@ -1,0 +1,23 @@
+
+- name: Copy the erlang cookie to all the rabbitmq nodes
+  template:
+    force: yes
+    src: erlang.cookie.j2
+    dest: /var/lib/rabbitmq/.erlang.cookie
+    mode: '600'
+
+- name: Restart rabbitmq-server
+  command: systemctl restart rabbitmq-server
+  when: inventory_hostname != "master"
+
+- name: Stopping app
+  command: rabbitmqctl stop_app
+  when: inventory_hostname != "master"
+
+- name: Joining slave01 and slave02 to master
+  command: rabbitmqctl join_cluster rabbit@{{ master.name }}
+  when: inventory_hostname != "master"
+
+- name: Start app again after joining
+  command: rabbitmqctl start_app
+  when: inventory_hostname != "master"

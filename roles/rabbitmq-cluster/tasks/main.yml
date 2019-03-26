@@ -3,6 +3,7 @@
 
 - include: hosts.yml
 - include: install.yml
+- include: logging.yml
 - include: plugins.yml
 - include: firewall.yml
 - include: setup_cluster.yml

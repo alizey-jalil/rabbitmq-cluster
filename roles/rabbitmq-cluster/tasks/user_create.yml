@@ -1,4 +1,4 @@
-# Applying ignore_errors only because error can be thrown in the case user already exists
+# Applying ignore_errors because error can be thrown in the case that the  user already exists
 
 - name: Create a new user for rabbitmq
   command: rabbitmqctl add_user {{ rabbit_username }} {{ rabbit_password }}

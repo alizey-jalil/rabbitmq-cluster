@@ -1,0 +1,13 @@
+- name: Ensure log base is configured
+  file:
+    path: "{{ rabbitmq_cluster_log_dir }}"
+    state: directory
+    mode: '755'
+
+- name: Render logrotate config
+  template:
+    src: logrotate.j2
+    dest: /etc/logrotate.d/rabbitmq-server
+    owner: root
+    group: root
+    mode: '644'

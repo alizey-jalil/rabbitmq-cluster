@@ -12,8 +12,6 @@
 
 - name: Installing rabbitmq-server to all nodes
   become: yes
-  become_user: root
-  become_method: sudo
   yum:
     name: rabbitmq-server
     state: present

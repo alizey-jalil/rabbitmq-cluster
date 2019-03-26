@@ -15,6 +15,7 @@
   when: inventory_hostname != "master"
 
 - name: Joining slave01 and slave02 to master
+  become: yes
   command: rabbitmqctl join_cluster rabbit@{{ master.name }}
   when: inventory_hostname != "master"
 

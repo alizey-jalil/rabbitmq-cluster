@@ -1,8 +1,6 @@
 
 - name: Enable firewalld
   become: yes
-  become_method: sudo
-  become_user: root
   service:
     name: firewalld
     enabled: yes
@@ -10,8 +8,6 @@
 
 - name: Opening port for rabbitmq management
   become: yes
-  become_method: sudo
-  become_user: root
   command: firewall-cmd --add-port={{ item }}/tcp --permanent
   with_items:
     - "{{ rmq_port.management_port }}"

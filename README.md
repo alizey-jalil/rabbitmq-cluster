@@ -26,9 +26,15 @@ Variables to be set by the user are:
 
 6. `slave02.name` : Set the hostname of the 2nd slave here.
 
-7. `rabbit_username` : Set the username of the rabbitmq user over here which will have admin access.
+7. `rabbit_username` : Set the username of the RabbitMQ user over here which will have admin access.
 
-8. `rabbit_password` : Set the password of the rabbitmq user over here which will have admin access.
+8. `rabbit_password` : Set the password of the RabbitMQ user over here which will have admin access.
+
+9. `rabbitmq_cluster_log_dir` : Set the log directory for RabbitMQ here, no need to change it.
+
+10. `rabbitmq_logrotate_period` : Set the logrotate period here for logs of RabbitMQ.
+
+11. `rabbitmq_logrotate_amount` : Set the logrotate amount here for logs of RabbitMQ.
 
  - Note: Don't change other variables in the file, those varibles are fixed values which shouldn't be changed before executing the playbook.
 
@@ -39,8 +45,6 @@ You can create a simple master playbook to run this role:
 ```yml
 - hosts: all
   become: yes
-  become_method: sudo
-  become_user: root
   roles:
     - rabbitmq-cluster
 ```
